@@ -13,226 +13,208 @@ var js4lol = new Js4LoL(config);
 ```
 
 ######Get basic information of all champions
-```node js4lol.getChampionsBasic(region, freeToPlay, callback);```
+```node
+js4lol.getChampionsBasic(region, freeToPlay[true|false], callback);
+
+```
 
 ######Get a champion's basic information by it's id
-```node js4lol.getChampionBasic(region, championId, callback);```
+```node 
+js4lol.getChampionBasic(region, championId, callback);
 
+```
+
+######Get a list of current featured games in a region
+```node 
 js4lol.getFeaturedGames(region, callback);
 
-js4lol.getSummonerRecentGames('lan', 150062, function(error, body){
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
 
-js4lol.getLeagueBySummId('lan', 150062, function(error, body){
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+######Get a list of a summoner's recent games
+```node
+js4lol.getSummonerRecentGames('lan', 150062, callback);
 
-js4lol.getLeagueEntryBySummId('lan', 150062, function(error, body){
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
 
-js4lol.getGameTypeChallengerLeague('lan', js4lol.gameTypes.RANKED_SOLO_5x5, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get a list of leagues by summoner id
+```node 
+js4lol.getLeagueBySummId(region, summonerId, callback);
 
+```
 
-js4lol.getGameTypeMasterLeague('lan', 'RANKED_SOLO_5x5', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get a list of league entries by summoner id
+```node 
+js4lol.getLeagueEntryBySummId(region, summonerId, callback);
 
-js4lol.getChampionsStaticData('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getChampionStaticData('lan', 5,function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get a list of leagues by team id
+```node 
+js4lol.getLeagueByTeamId(region, teamId, callback);
 
-js4lol.getAllItemsStaticData('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getItemStaticData('lan', 3800, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get a list league entries by team id
+```node 
+js4lol.getLeagueEntryByTeamId(region, teamId, callback);
 
-js4lol.getMapsStaticData('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getMasteriesData('na', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get the challenger league of the given region and game queue type
+```node 
+js4lol.getGameTypeChallengerLeague(region, gameQueueType[ie. RANKED_SOLO_5x5], callback);
 
-js4lol.getMasteryDataById('na', 4341, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getRealmByRegion('na', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get the master league of the given region and game queue type
+```node 
+js4lol.getGameTypeMasterLeague(region, gameQueueType[ie. RANKED_SOLO_5x5], callback);
 
-js4lol.getRunesData('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getRuneDataById('lan', 8035, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get the static data of all champions
+```node 
+js4lol.getChampionsData('lan', callback);
 
-js4lol.getSummonerSpellsData('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getSummonerSpellById('lan', 4, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+######Get a champion's static data by it's id
+```node 
+js4lol.getChampionDataById(region, championId, callback);
 
-js4lol.getStatusByRegion('lan', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
-								true||false
-js4lol.getMatchById('lan', 166312028, false, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-Js4LoL.prototype. = function(region, summonerId, championIds, rankedQueues, beginIndex, endIndex, callback)
+######Get the data of all the items
+```node 
+js4lol.getItemsData(region, callback);
 
-js4lol.getSummonerMatchHistory('lan', 150062, '10', 'RANKED_SOLO_5x5,RANKED_TEAM_5x5', null, null, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-})
+```
 
-js4lol.getSummonerRankedStats('lan', 150062, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-}, 'SEASON2014');
+######Get item data by it's id
+```node 
+js4lol.getItemStaticDataById(region, itemId, callback);
 
-js4lol.getSummonerStats('lan', 150062, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-}, 'SEASON2014');
+```
 
-js4lol.getSummonerByName('lan', 'MicroIce', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+######Get maps data
+```node 
+js4lol.getMapsData(region, callback);
 
-js4lol.getSummonerById('lan', 61509, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
 
-js4lol.getSummonerMasteries('lan', 61509, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+######Get the data of all the masteries
+```node
+js4lol.getMasteriesData(region, callback);
 
-js4lol.getSummonerName('lan', 61509, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
+######Get mastery data by it's id
+```node
+js4lol.getMasteryDataById (region, masteryId, callback);
 
-js4lol.getSummonerRunes('lan', 61509, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
+#####Dragon static data
+######Get realm by id
+```node
+js4lol.getRealmByRegion(region, callback);
 
-js4lol.getSummonerTeams('lan', 61509, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+```
 
-js4lol.getTeamById('lan', 'TEAM-d17bcd60-8772-11e3-9087-d4ae528a458b', function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+######Get runes data
+```node
+js4lol.getRunesData(region, callback);
 
-var t = 'lan';
-console.log(js4lol.observerPlatformByRegion[t]);
+```
 
-js4lol.getCurrentGame('lan', 5660153, function(error, body) {
-	if (body)
-		console.log(body);
-	else
-		console.log(error);
-});
+######Get rune data by it's id
+```node
+js4lol.getRuneDataById(region, runeId, callback);
+
+```
+
+######Get summoner spells data
+```node
+js4lol.getSummonerSpellsData(region, callback);
+
+```
+
+######Get summoner spell data by it's id
+```node 
+js4lol.getSummonerSpellById(region, spellId, callback);
+
+```
+
+#####Status
+######Get status by region
+```node
+js4lol.getStatusByRegion(region, callback);
+
+```
+
+######Matches
+######Get match by id
+```node 
+js4lol.getMatchById(region, matchId, includeTimeline[true|false], callback);
+
+```
+######Get match history by summoner id
+```node
+js4lol.getSummonerMatchHistory(region, summonerId, [championIds|null], [rankedQueues|null], [beginIndex|null],[endIndex|null, callback);
+
+```
+
+#####Stats
+######Get summoner ranked stats
+```node
+js4lol.getSummonerRankedStats(region, summonerId, callback, season);
+
+```
+
+######Get summoner stats
+```node 
+js4lol.getSummonerStats(region, summonerId, callback, season);
+
+```
+
+#####Summoner
+######Get summoner by name
+```node
+js4lol.getSummonerByName(region, summonerNames, callback);
+
+```
+
+######Get summoner by id
+```node
+js4lol.getSummonerById(region, summonerIds, callback);
+
+```
+
+######Get summoner masteries
+```node
+js4lol.getSummonerMasteries(region, summonerIds, callback);
+
+```
+
+######Get summoner name
+```node
+js4lol.getSummonerName(region, summonerIds, callback);
+
+```
+
+######Get summoner runes
+```node
+js4lol.getSummonerRunes(region, summonerIds, callback);
+
+```
+
+#####Teams
+######Get summoner teams
+```node
+js4lol.getSummonerTeams(region, summonerIds, callback);
+
+```
+
+######Get team by id
+```node
+js4lol.getTeamById(region, teamIds, callback);
+
 ```
