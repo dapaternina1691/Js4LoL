@@ -1,7 +1,7 @@
 var Js4LoL = require('./js4lol.js');
 
 var config = {
-	api_key: '23f13179-1897-4a38-8c48-61b2dd3973af',
+	api_key: 'YOUR-API-KEY',
 	debug: true
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "js4lol",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Node.js League of Legends API module",
   "keywords": ["wrapper", "League of Legends", "lol", "node-lol", "league", "of", "legends", "api", "riot", "loljs", "async"],
   "main": "main.js",
