@@ -74,42 +74,42 @@ js4lol.getGameTypeMasterLeague(region, gameQueueType[ie. RANKED_SOLO_5x5], callb
 
 ######Get the static data of all champions
 ```node 
-js4lol.getChampionsData('lan', callback);
+js4lol.getChampionsData(region, locale, champData, callback);
 
 ```
 
 ######Get a champion's static data by it's id
 ```node 
-js4lol.getChampionDataById(region, championId, callback);
+js4lol.getChampionDataById(region, championId, locale, champData, callback);
 
 ```
 
 ######Get the data of all the items
 ```node 
-js4lol.getItemsData(region, callback);
+js4lol.getItemsData(region, locale, itemListData, callback);
 
 ```
 
 ######Get item data by it's id
 ```node 
-js4lol.getItemStaticDataById(region, itemId, callback);
+js4lol.getItemStaticDataById(region, itemId, locale, itemData, callback);
 
 ```
 
 ######Get maps data
 ```node 
-js4lol.getMapsData(region, callback);
+js4lol.getMapsData(region, locale, callback);
 
 ```
 
 ######Get the data of all the masteries
 ```node
-js4lol.getMasteriesData(region, callback);
+js4lol.getMasteriesData(region, locale, masteryListData, callback);
 
 ```
 ######Get mastery data by it's id
 ```node
-js4lol.getMasteryDataById (region, masteryId, callback);
+js4lol.getMasteryDataById (region, masteryId, locale, masteryData, callback);
 
 ```
 #####Dragon static data
@@ -121,25 +121,25 @@ js4lol.getRealmByRegion(region, callback);
 
 ######Get runes data
 ```node
-js4lol.getRunesData(region, callback);
+js4lol.getRunesData(region, locale, runeListData, callback);
 
 ```
 
 ######Get rune data by it's id
 ```node
-js4lol.getRuneDataById(region, runeId, callback);
+js4lol.getRuneDataById(region, runeId, locale, runeData, callback);
 
 ```
 
 ######Get summoner spells data
 ```node
-js4lol.getSummonerSpellsData(region, callback);
+js4lol.getSummonerSpellsData(region, locale, spellData, callback);
 
 ```
 
 ######Get summoner spell data by it's id
 ```node 
-js4lol.getSummonerSpellById(region, spellId, callback);
+js4lol.getSummonerSpellById(region, spellId, locale, spellData, callback);
 
 ```
 
