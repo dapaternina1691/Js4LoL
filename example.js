@@ -1,4 +1,4 @@
-var Js4LoL = require('./main.js');
+var Js4LoL = require('./js4lol.js');
 
 var config = {
 	api_key: 'YOUR-API-KEY',

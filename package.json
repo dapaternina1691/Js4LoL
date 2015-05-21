@@ -1,11 +1,11 @@
 {
   "name": "js4lol",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Node.js League of Legends API module",
   "keywords": ["wrapper", "League of Legends", "lol", "node-lol", "league", "of", "legends", "api", "riot", "loljs", "async"],
   "main": "main.js",
   "repository": {
-    "url": "https://github.com/dapaternina1691/LoLJS"
+    "url": "https://github.com/dapaternina1691/Js4LoL"
   },
   "scripts": {
     "examples": "node examples.js"
