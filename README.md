@@ -4,8 +4,9 @@
 
 ##Installation
 
-```
+<a href="https://www.npmjs.com/package/js4lol"><img src="https://nodei.co/npm/js4lol.png?downloads=true"/></a>
 
+```
 npm install js4lol
 
 ```
