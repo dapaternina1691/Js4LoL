@@ -12,10 +12,11 @@ var config = {
 var js4lol = new Js4LoL(config);
 ```
 
-######Get basic info of all champions
+######Get basic information of all champions
 ```node js4lol.getChampionsBasic(region, freeToPlay, callback);```
 
-js4lol.getChampionBasic(region, championId, callback);
+######Get a champion's basic information by it's id
+```node js4lol.getChampionBasic(region, championId, callback);```
 
 js4lol.getFeaturedGames(region, callback);
 
