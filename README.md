@@ -34,7 +34,7 @@ js4lol.getSummonerByName('lan', 'MicroIce', function(error, body) {
 });
 ```
 
-
+<a href="https://github.com/dapaternina1691/Js4LoL/blob/master/Method%20list.md">Click here</a> to see all the methods.
 
 
 ##About
