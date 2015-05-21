@@ -2,9 +2,9 @@
 
 var request = require('request');
 var url = require('url');
-var LoLJSError = require('./js4lol_error');
+var Js4LoLError = require('./js4lol_error');
 
-var LoLJS = function(config) {
+var Js4LoL = function(config) {
 	this.api_key = config.api_key;
 	this.debug = config.debug;
 	return this;
@@ -12,7 +12,7 @@ var LoLJS = function(config) {
 
 // ---------------------------------- Basic functions for requests --------------------------------------------------
 
-LoLJS.prototype.createApiUrl = function (options){
+Js4LoL.prototype.createApiUrl = function (options){
 
 	if(options && options.query){
 		options.query.api_key = this.api_key;
@@ -38,7 +38,7 @@ LoLJS.prototype.createApiUrl = function (options){
 
 };
 
-LoLJS.prototype.createObserverUrl = function (options){
+Js4LoL.prototype.createObserverUrl = function (options){
 
 	if(options && options.query){
 		options.query.api_key = this.api_key;
@@ -63,7 +63,7 @@ LoLJS.prototype.createObserverUrl = function (options){
 
 };
 
-LoLJS.prototype.createStaticDataUrl = function (options){
+Js4LoL.prototype.createStaticDataUrl = function (options){
 
 	if(options && options.query){
 		options.query.api_key = this.api_key;
@@ -88,7 +88,7 @@ LoLJS.prototype.createStaticDataUrl = function (options){
 
 };
 
-LoLJS.prototype.executeRequest = function (url, callback){
+Js4LoL.prototype.executeRequest = function (url, callback){
 
 	if (this.debug)
 		console.log('Url: ' + url);
@@ -110,7 +110,7 @@ LoLJS.prototype.executeRequest = function (url, callback){
 				}
 			} else {
 				//Create new error and send it to callback
-				err = new LoLJSError(url, res.statusCode);
+				err = new Js4LoLError(url, res.statusCode);
 				callback(err);
 			}
 		}
@@ -120,7 +120,7 @@ LoLJS.prototype.executeRequest = function (url, callback){
 // ------------------------------------------------------------------------------------------------------------------
 // --------------------------------------------- Champions basic ----------------------------------------------------
 
-LoLJS.prototype.getChampionsBasic = function (region, freeToPlay, callback) {	
+Js4LoL.prototype.getChampionsBasic = function (region, freeToPlay, callback) {	
 
 	var options = {
 		region: region,
@@ -134,7 +134,7 @@ LoLJS.prototype.getChampionsBasic = function (region, freeToPlay, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getChampionBasic = function(region, champId, callback) {
+Js4LoL.prototype.getChampionBasic = function(region, champId, callback) {
 	var options = {
 		region: region,
 		path: '/v1.2/champion/' + champId
@@ -147,7 +147,7 @@ LoLJS.prototype.getChampionBasic = function(region, champId, callback) {
 // ------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Observer (Featured games, current game) ---------------------------------------
 
-LoLJS.prototype.getFeaturedGames = function(region, callback) {
+Js4LoL.prototype.getFeaturedGames = function(region, callback) {
 	var options = {
 		region: region,
 		path: 'featured'
@@ -157,7 +157,7 @@ LoLJS.prototype.getFeaturedGames = function(region, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getCurrentGame = function(region, summonerId, callback) {
+Js4LoL.prototype.getCurrentGame = function(region, summonerId, callback) {
 
 	var platfrom = this.observerPlatformByRegion[region];
 	var options = {
@@ -171,7 +171,7 @@ LoLJS.prototype.getCurrentGame = function(region, summonerId, callback) {
 
 // ------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Summoner recent games ---------------------------------------------------------
-LoLJS.prototype.getSummonerRecentGames = function(region, summonerId, callback){
+Js4LoL.prototype.getSummonerRecentGames = function(region, summonerId, callback){
 	var options = {
 		region: region,
 		path: '/v1.3/game/by-summoner/' + summonerId + '/recent'
@@ -184,7 +184,7 @@ LoLJS.prototype.getSummonerRecentGames = function(region, summonerId, callback){
 // ------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- League info -------------------------------------------------------------------
 
-LoLJS.prototype.getLeagueBySummId = function(region, summonerId, callback, entry) {
+Js4LoL.prototype.getLeagueBySummId = function(region, summonerId, callback, entry) {
 
 	var path = '/v2.5/league/by-summoner/' + summonerId
 	if (entry)
@@ -199,11 +199,11 @@ LoLJS.prototype.getLeagueBySummId = function(region, summonerId, callback, entry
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getLeagueEntryBySummId = function(region, summonerId, callback) {
+Js4LoL.prototype.getLeagueEntryBySummId = function(region, summonerId, callback) {
 	this.getLeagueBySummId(region, summonerId, callback, true);
 }
 
-LoLJS.prototype.getLeagueByTeamId = function(region, teamId, callback, entry) {
+Js4LoL.prototype.getLeagueByTeamId = function(region, teamId, callback, entry) {
 
 	var path = '/v2.5/league/by-team/' + teamId
 	if(entry)
@@ -217,11 +217,11 @@ LoLJS.prototype.getLeagueByTeamId = function(region, teamId, callback, entry) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getLeagueEntryByTeamId = function(region, teamId, callback) {
+Js4LoL.prototype.getLeagueEntryByTeamId = function(region, teamId, callback) {
 	this.getLeagueByTeamId(region, teamId, callback, true);
 }
 
-LoLJS.prototype.getGameTypeChallengerLeague = function(region, gameType, callback) {
+Js4LoL.prototype.getGameTypeChallengerLeague = function(region, gameType, callback) {
 	var options = {
 		region: region,
 		path: '/v2.5/league/challenger',
@@ -233,7 +233,7 @@ LoLJS.prototype.getGameTypeChallengerLeague = function(region, gameType, callbac
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getGameTypeMasterLeague = function(region, gameType, callback) {
+Js4LoL.prototype.getGameTypeMasterLeague = function(region, gameType, callback) {
 	var options = {
 		region: region,
 		path: '/v2.5/league/master',
@@ -248,34 +248,69 @@ LoLJS.prototype.getGameTypeMasterLeague = function(region, gameType, callback) {
 // ------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Lol static data ---------------------------------------------------------------
 
-LoLJS.prototype.getChampionsData = function(region, callback) {
+Js4LoL.prototype.getChampionsData = function(region, locale, champData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (champData)
+		query.champData = champData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/champion'
+		path: '/v1.2/champion',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getChampionDataById = function(region, champId, callback) {
+Js4LoL.prototype.getChampionDataById = function(region, champId, locale, champData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (champData)
+		query.champData = champData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/champion/' + champId
+		path: '/v1.2/champion/' + champId,
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getItemsData = function(region, callback) {
+Js4LoL.prototype.getItemsData = function(region, locale, itemListData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (itemListData)
+		query.itemListData = itemListData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/item'
+		path: '/v1.2/item',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getItemStaticDataById = function(region, itemId, callback) {
+Js4LoL.prototype.getItemStaticDataById = function(region, itemId, locale, itemData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (itemData)
+		query.itemData = itemData;
+
 	var options = {
 		region: region,
 		path: '/v1.2/item/' + itemId
@@ -284,28 +319,53 @@ LoLJS.prototype.getItemStaticDataById = function(region, itemId, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getMapsData = function(region, callback) {
+Js4LoL.prototype.getMapsData = function(region, locale, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+
 	var options = {
 		region: region,
-		path: '/v1.2/map/'
+		path: '/v1.2/map/',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getMasteriesData = function(region, callback) {
+Js4LoL.prototype.getMasteriesData = function(region, locale, masteryListData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (masteryListData)
+		query.masteryListData = masteryListData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/mastery'
+		path: '/v1.2/mastery',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getMasteryDataById = function(region, masteryId, callback) {
+Js4LoL.prototype.getMasteryDataById = function(region, masteryId, locale, masteryData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (masteryData)
+		query.masteryData = masteryData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/mastery/' + masteryId
+		path: '/v1.2/mastery/' + masteryId,
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
@@ -313,7 +373,7 @@ LoLJS.prototype.getMasteryDataById = function(region, masteryId, callback) {
 
 // ----------------------------- DDragon ----------------------------------------
 
-LoLJS.prototype.getRealmByRegion = function(region, callback) {
+Js4LoL.prototype.getRealmByRegion = function(region, callback) {
 	var options = {
 		region: region,
 		path: '/v1.2/realm'
@@ -322,37 +382,73 @@ LoLJS.prototype.getRealmByRegion = function(region, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getRunesData = function(region, callback) {
+Js4LoL.prototype.getRunesData = function(region, locale, runeListData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (runeListData)
+		query.runeListData = runeListData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/rune'
+		path: '/v1.2/rune',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getRuneDataById = function(region, runeId, callback) {
+Js4LoL.prototype.getRuneDataById = function(region, runeId, locale, runeData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (runeData)
+		query.runeData = runeData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/rune/' + runeId
+		path: '/v1.2/rune/' + runeId,
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerSpellsData = function(region, callback) {
+Js4LoL.prototype.getSummonerSpellsData = function(region, locale, spellData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (spellData)
+		query.spellData = spellData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/summoner-spell'
+		path: '/v1.2/summoner-spell',
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerSpellById = function(region, spellId, callback) {
+Js4LoL.prototype.getSummonerSpellById = function(region, spellId, locale, spellData, callback) {
+
+	var query = {};
+
+	if (locale)
+		query.locale = locale;
+	if (spellData)
+		query.spellData = spellData;
+
 	var options = {
 		region: region,
-		path: '/v1.2/summoner-spell/' + spellId
+		path: '/v1.2/summoner-spell/' + spellId,
+		query: query
 	}
 	var url = this.createStaticDataUrl(options);
 	this.executeRequest(url, callback);
@@ -360,7 +456,7 @@ LoLJS.prototype.getSummonerSpellById = function(region, spellId, callback) {
 
 // ----------------------------- Status ----------------------------------------
 
-LoLJS.prototype.getStatusByRegion = function(region, callback) {
+Js4LoL.prototype.getStatusByRegion = function(region, callback) {
 	
 	var url = 'http://status.leagueoflegends.com/shards/' + region;
 	this.executeRequest(url, callback);
@@ -369,7 +465,7 @@ LoLJS.prototype.getStatusByRegion = function(region, callback) {
 // -------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Matches -------------------------------------------------------------------------
 
-LoLJS.prototype.getMatchById = function(region, matchId, includeTimeline, callback) {
+Js4LoL.prototype.getMatchById = function(region, matchId, includeTimeline, callback) {
 	var options = {
 		region: region,
 		path: '/v2.2/match/' + matchId,
@@ -381,7 +477,7 @@ LoLJS.prototype.getMatchById = function(region, matchId, includeTimeline, callba
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerMatchHistory = function(region, summonerId, championIds, rankedQueues, beginIndex, endIndex, callback) {
+Js4LoL.prototype.getSummonerMatchHistory = function(region, summonerId, championIds, rankedQueues, beginIndex, endIndex, callback) {
 
 	var query = {};
 
@@ -409,7 +505,7 @@ LoLJS.prototype.getSummonerMatchHistory = function(region, summonerId, championI
 // -------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Stats --------------------------------------------------------------------------
 
-LoLJS.prototype.getSummonerRankedStats = function(region, summonerId, callback, season) {
+Js4LoL.prototype.getSummonerRankedStats = function(region, summonerId, callback, season) {
 
 	var query = {};
 
@@ -425,7 +521,7 @@ LoLJS.prototype.getSummonerRankedStats = function(region, summonerId, callback, 
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerStats = function(region, summonerId, callback, season) {
+Js4LoL.prototype.getSummonerStats = function(region, summonerId, callback, season) {
 
 	var query = {};
 
@@ -444,7 +540,7 @@ LoLJS.prototype.getSummonerStats = function(region, summonerId, callback, season
 // -------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Stats --------------------------------------------------------------------------
 
-LoLJS.prototype.getSummonerByName = function(region, summonerNames, callback) {
+Js4LoL.prototype.getSummonerByName = function(region, summonerNames, callback) {
 
 	var options = {
 		region: region,
@@ -454,7 +550,7 @@ LoLJS.prototype.getSummonerByName = function(region, summonerNames, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerById = function(region, summonerIds, callback) {
+Js4LoL.prototype.getSummonerById = function(region, summonerIds, callback) {
 
 	var options = {
 		region: region,
@@ -464,7 +560,7 @@ LoLJS.prototype.getSummonerById = function(region, summonerIds, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerMasteries = function(region, summonerIds, callback) {
+Js4LoL.prototype.getSummonerMasteries = function(region, summonerIds, callback) {
 
 	var options = {
 		region: region,
@@ -474,7 +570,7 @@ LoLJS.prototype.getSummonerMasteries = function(region, summonerIds, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerName = function(region, summonerIds, callback) {
+Js4LoL.prototype.getSummonerName = function(region, summonerIds, callback) {
 
 	var options = {
 		region: region,
@@ -484,7 +580,7 @@ LoLJS.prototype.getSummonerName = function(region, summonerIds, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getSummonerRunes = function(region, summonerIds, callback) {
+Js4LoL.prototype.getSummonerRunes = function(region, summonerIds, callback) {
 
 	var options = {
 		region: region,
@@ -497,7 +593,7 @@ LoLJS.prototype.getSummonerRunes = function(region, summonerIds, callback) {
 // -------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Teams --------------------------------------------------------------------------
 
-LoLJS.prototype.getSummonerTeams = function(region, summonerIds, callback) {
+Js4LoL.prototype.getSummonerTeams = function(region, summonerIds, callback) {
 
 	var options = {
 		region: region,
@@ -507,7 +603,7 @@ LoLJS.prototype.getSummonerTeams = function(region, summonerIds, callback) {
 	this.executeRequest(url, callback);
 }
 
-LoLJS.prototype.getTeamById = function(region, teamIds, callback) {
+Js4LoL.prototype.getTeamById = function(region, teamIds, callback) {
 
 	var options = {
 		region: region,
@@ -520,7 +616,7 @@ LoLJS.prototype.getTeamById = function(region, teamIds, callback) {
 // --------------------------------------------------------------------------------------------------------------------
 // ---------------------------------- Helper --------------------------------------------------------------------------
 
-LoLJS.prototype.observerPlatformByRegion = {
+Js4LoL.prototype.observerPlatformByRegion = {
 		euw: 'EUW1',
 		eune: 'EUN1',
 		na: 'NA1',
@@ -535,4 +631,4 @@ LoLJS.prototype.observerPlatformByRegion = {
 
 
 
-module.exports = LoLJS;
+module.exports = Js4LoL;

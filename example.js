@@ -1,7 +1,7 @@
 var Js4LoL = require('./js4lol.js');
 
 var config = {
-	api_key: 'YOUR-API-KEY',
+	api_key: '23f13179-1897-4a38-8c48-61b2dd3973af',
 	debug: true
 };
 
@@ -49,7 +49,7 @@ var js4lol = new Js4LoL(config);
 // 		console.log(error);
 // });
 
-// js4lol.getGameTypeChallengerLeague('lan', js4lol.gameTypes.RANKED_SOLO_5x5, function(error, body) {
+// js4lol.getGameTypeChallengerLeague('lan', 'RANKED_SOLO_5x5', function(error, body) {
 // 	if (body)
 // 		console.log(body);
 // 	else
@@ -64,89 +64,7 @@ var js4lol = new Js4LoL(config);
 // 		console.log(error);
 // })
 
-// js4lol.getChampionsStaticData('lan', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
 
-// js4lol.getChampionStaticData('lan', 5,function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getAllItemsStaticData('lan', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getItemStaticData('lan', 3800, function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getMapsStaticData('lan', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getMasteriesData('na', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getMasteryDataById('na', 4341, function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getRealmByRegion('na', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getRunesData('lan', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getRuneDataById('lan', 8035, function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getSummonerSpellsData('lan', function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
-
-// js4lol.getSummonerSpellById('lan', 4, function(error, body) {
-// 	if (body)
-// 		console.log(body);
-// 	else
-// 		console.log(error);
-// })
 
 // js4lol.getStatusByRegion('lan', function(error, body) {
 // 	if (body)
@@ -154,7 +72,7 @@ var js4lol = new Js4LoL(config);
 // 	else
 // 		console.log(error);
 // })
-								//true||false
+// 								true||false
 // js4lol.getMatchById('lan', 166312028, false, function(error, body) {
 // 	if (body)
 // 		console.log(body);
@@ -243,3 +161,80 @@ var js4lol = new Js4LoL(config);
 // 	else
 // 		console.log(error);
 // });
+
+// js4lol.getChampionsData('lan', 'en_US', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getChampionDataById('lan', 5, 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getItemsData('lan', 'es_MX', 'stats', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getItemStaticDataById('lan', 3800, 'es_MX', 'stats', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getMapsData('lan', 'es_MX', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getMasteriesData('lan', 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getMasteryDataById('lan', 4353, 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getRunesData('lan', 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getRuneDataById('lan', 5374, 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+// js4lol.getSummonerSpellsData('lan', 'es_MX', 'all', function(error, body){
+// 		if (body)
+// 		console.log(body);
+// 	else
+// 		console.log(error);
+// });
+
+js4lol.getSummonerSpellById('lan', 4, 'es_MX', 'all', function(error, body){
+		if (body)
+		console.log(body);
+	else
+		console.log(error);
+});
